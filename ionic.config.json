@@ -1,0 +1,7 @@
+{
+  "name": "futsalan",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
