@@ -1,0 +1,184 @@
+<!-- Schedule Preview Component -->
+<div class="schedule-preview">
+  <!-- ================= Header & Legend ================= -->
+  <div
+    class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 md:gap-6"
+  >
+    <!-- Legend Status -->
+    <div
+      class="flex flex-wrap items-center gap-3 md:gap-6 bg-gray-800/60 rounded-xl px-2 py-2 md:px-4 border border-gray-700/60 shadow w-full md:w-auto"
+    >
+      <ng-container
+        *ngFor="
+          let legend of [
+            {
+              color: 'from-green-500 to-green-400 border-green-300',
+              text: 'Tersedia',
+              textColor: 'text-green-200',
+            },
+            {
+              color: 'from-red-500 to-red-400 border-red-300',
+              text: 'Dibooking',
+              textColor: 'text-red-200',
+            },
+            {
+              color: 'from-yellow-500 to-yellow-400 border-yellow-300',
+              text: 'Maintenance',
+              textColor: 'text-yellow-100',
+            },
+            {
+              color: 'from-blue-500 to-blue-400 border-blue-300',
+              text: 'Turnamen',
+              textColor: 'text-blue-200',
+            },
+          ]
+        "
+      >
+        <div class="flex items-center gap-2 min-w-[110px]">
+          <div
+            class="w-4 h-4 rounded-full bg-gradient-to-r {{ legend.color }} shadow-lg border-2 {{
+              legend.color.split(' ')[2]
+            }}"
+          ></div>
+          <span class="text-xs md:text-sm font-semibold {{ legend.textColor }}">
+            {{ legend.text }}
+          </span>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Filter Waktu -->
+    <div class="flex gap-2 md:gap-3 w-full md:w-auto mt-2 md:mt-0">
+      <ng-container *ngFor="let period of periodOptions">
+        <button
+          class="w-full md:w-auto px-3 md:px-4 py-2 rounded-xl transition-all duration-200 font-medium text-xs md:text-sm"
+          [ngClass]="
+            selectedPeriod === period.key
+              ? 'bg-gradient-to-r from-green-600/20 to-yellow-500/20 border border-green-500/30 text-green-300 hover:from-green-600/30 hover:to-yellow-500/30'
+              : 'bg-gray-800/50 border border-gray-600/30 text-gray-300 hover:bg-gray-700/50'
+          "
+          (click)="selectedPeriod = period.key"
+        >
+          {{ period.label }}
+        </button>
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- ================= Jadwal Grid ================= -->
+  <div
+    class="overflow-x-auto rounded-2xl border border-gray-700/50 bg-gray-900/50 backdrop-blur-sm shadow-2xl min-w-0 animate-fade-in"
+  >
+    <table
+      class="min-w-[400px] md:min-w-[700px] w-full border-collapse jadwal-table text-[11px] md:text-xs"
+    >
+      <thead>
+        <tr>
+          <th class="jadwal-th w-16 min-w-[60px]">Jam</th>
+          <ng-container *ngFor="let day of daysOfWeek">
+            <th
+              class="jadwal-th"
+              [ngClass]="getTodayIndex() === day.idx ? '' : 'hidden sm:table-cell'"
+            >
+              {{
+                day.key === 'monday'
+                  ? 'Senin'
+                  : day.key === 'tuesday'
+                    ? 'Selasa'
+                    : day.key === 'wednesday'
+                      ? 'Rabu'
+                      : day.key === 'thursday'
+                        ? 'Kamis'
+                        : day.key === 'friday'
+                          ? 'Jumat'
+                          : day.key === 'saturday'
+                            ? 'Sabtu'
+                            : 'Minggu'
+              }}
+            </th>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let slot of scheduleData; let i = index">
+          <td
+            class="border-b border-r border-gray-600/30 px-1 py-1 text-center font-semibold text-gray-300 bg-gray-800/30 text-xs whitespace-nowrap animate-fade-in"
+            [style]="'animation-delay:' + i * 80 + 'ms'"
+          >
+            {{ slot.time }}
+          </td>
+          <ng-container *ngFor="let day of daysOfWeek">
+            <td
+              class="jadwal-td"
+              [ngClass]="
+                getTodayIndex() === day.idx ? 'ring-2 ring-green-400/60' : 'hidden sm:table-cell'
+              "
+            >
+              <ng-container *ngFor="let lap of slot[day.key]">
+                <div
+                  [ngClass]="
+                    getStatusClasses(lap.status) +
+                    ' group ' +
+                    (lap.status === 'available'
+                      ? 'animate-slot-pop transition-transform duration-200 hover:scale-105 hover:shadow-2xl focus:scale-105 focus:shadow-2xl'
+                      : '')
+                  "
+                  (click)="lap.status === 'available' && onSlotClick(lap)"
+                  [attr.aria-label]="lap.field + ' - ' + lap.description"
+                  tabindex="0"
+                  [class.cursor-pointer]="lap.status === 'available'"
+                >
+                  <div class="text-xs md:text-sm">{{ lap.field }}</div>
+                  <div
+                    class="text-[10px] md:text-xs mt-0.5 font-normal"
+                    [ngClass]="getStatusDescriptionColor(lap.status)"
+                  >
+                    {{ lap.description }}
+                  </div>
+                  <span
+                    *ngIf="lap.status === 'available'"
+                    class="hidden group-hover:inline absolute left-1/2 -translate-x-1/2 mt-1 bg-gray-900/90 text-green-200 text-[10px] px-2 py-1 rounded shadow-lg z-20"
+                  >
+                    Klik untuk booking
+                  </span>
+                </div>
+              </ng-container>
+            </td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ================= Button Lihat Selengkapnya ================= -->
+  <div class="flex justify-center mt-6">
+    <a
+      routerLink="/venue"
+      class="bg-gradient-to-r from-green-500 to-yellow-500 text-black hover:from-green-600 hover:to-yellow-600 py-2 px-6 rounded-full text-xs md:text-sm font-bold transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl shadow-lg"
+    >
+      Lihat Selengkapnya
+    </a>
+  </div>
+</div>
+
+<!-- ================= Tambahan style untuk responsif dan tooltip ================= -->
+<style>
+  .jadwal-th {
+    @apply bg-gradient-to-r from-gray-800 to-gray-700 font-bold border-b border-r border-gray-600/50 py-1 px-1 text-center text-gray-200 sticky top-0 z-10 whitespace-nowrap text-xs;
+  }
+  .jadwal-td {
+    @apply border-b border-r border-gray-600/30 px-1 py-1 text-center align-top text-xs whitespace-nowrap relative;
+  }
+  @media (max-width: 640px) {
+    .schedule-preview {
+      font-size: 12px;
+    }
+    .jadwal-table {
+      font-size: 11px;
+    }
+    .jadwal-th,
+    .jadwal-td {
+      padding: 0.25rem 0.25rem;
+    }
+  }
+</style>

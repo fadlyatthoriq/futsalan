@@ -1,0 +1,293 @@
+<ion-content [fullscreen]="true" class="body">
+  <app-nav-bar></app-nav-bar>
+
+  <!-- Hero Section -->
+  <div class="relative bg-black min-h-screen text-white overflow-hidden pt-24">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent"></div>
+    </div>
+
+    <div class="absolute inset-0">
+      <img
+        src="assets/pexels-bence-szemerey-337043-7513413.jpg"
+        alt="Futsal Court Background"
+        class="object-cover object-center w-full h-full"
+      />
+      <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+
+    <div
+      class="relative z-10 flex flex-col justify-center items-center min-h-screen text-center px-4 py-16 sm:py-24 md:py-32"
+    >
+      <!-- Main Heading -->
+      <h1
+        class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 sm:mb-6 bg-gradient-to-r from-white via-green-100 to-yellow-100 bg-clip-text text-transparent"
+      >
+        Book Your Futsal Court in Seconds
+      </h1>
+
+      <!-- Subtitle -->
+      <p
+        class="text-base sm:text-lg md:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-xl sm:max-w-2xl md:max-w-3xl leading-relaxed"
+      >
+        Real-time schedule. Instant booking. Zero hassle.
+      </p>
+
+      <!-- Features List -->
+      <div
+        class="flex flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-x-6 sm:gap-y-4 mb-8 sm:mb-12"
+      >
+        <div class="flex items-center text-green-300 text-sm sm:text-base md:text-lg">
+          <svg class="w-5 h-5 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <span>Real-time Availability</span>
+        </div>
+        <div class="flex items-center text-green-300 text-sm sm:text-base md:text-lg">
+          <svg class="w-5 h-5 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <span>Instant Confirmation</span>
+        </div>
+        <div class="flex items-center text-green-300 text-sm sm:text-base md:text-lg">
+          <svg class="w-5 h-5 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <span>Secure Payment</span>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-6 items-center">
+        <a
+          href="#"
+          class="bg-gradient-to-r from-green-500 to-yellow-500 text-black hover:from-green-600 hover:to-yellow-600 py-3 sm:py-4 px-6 sm:px-8 rounded-full text-base sm:text-lg font-bold transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl shadow-lg w-full sm:w-auto"
+        >
+          <span class="flex items-center justify-center">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              ></path>
+            </svg>
+            Book Now
+          </span>
+        </a>
+        <a
+          href="#"
+          class="border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black py-3 sm:py-4 px-6 sm:px-8 rounded-full text-base sm:text-lg font-semibold transition duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto"
+        >
+          View Venues
+        </a>
+      </div>
+
+      <!-- Stats Section -->
+      <div
+        class="mt-10 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 max-w-xs sm:max-w-2xl md:max-w-4xl w-full mx-auto"
+      >
+        <div class="text-center">
+          <div class="text-2xl sm:text-3xl font-bold text-yellow-400 mb-1 sm:mb-2">50+</div>
+          <div class="text-gray-300 text-sm sm:text-base">Venues Available</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl sm:text-3xl font-bold text-green-400 mb-1 sm:mb-2">24/7</div>
+          <div class="text-gray-300 text-sm sm:text-base">Booking Support</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl sm:text-3xl font-bold text-yellow-400 mb-1 sm:mb-2">10k+</div>
+          <div class="text-gray-300 text-sm sm:text-base">Happy Players</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Preview Schedule Section -->
+  <section class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black py-16">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2
+          class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-green-100 to-yellow-100 bg-clip-text text-transparent"
+        >
+        Real-Time Field Availability
+        </h2>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+          Instantly see which courts are free and secure your spot with just a tap
+        </p>
+      </div>
+
+      <!-- Schedule Component -->
+      <app-schedule-preview></app-schedule-preview>
+    </div>
+  </section>
+
+  <!-- Testimonial Section Component -->
+  <app-testimonial-section></app-testimonial-section>
+
+  <!-- About Section -->
+  <section
+    class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black py-16 overflow-hidden"
+  >
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2
+          class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-green-100 to-yellow-100 bg-clip-text text-transparent"
+        >
+          About Futsalan
+        </h2>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          Futsalan is a leading futsal field booking platform that connects players with quality
+          venues. We simplify the futsal field reservation process with real-time technology and a
+          secure payment system.
+        </p>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <!-- Feature Cards -->
+        <div class="space-y-6">
+          <!-- Booking 24/7 Card -->
+          <div
+            class="bg-gradient-to-br from-gray-800 to-gray-900 border border-green-500/20 rounded-2xl p-6 shadow-xl backdrop-blur-sm hover:border-green-400/40 transition-all duration-300 hover:scale-105"
+          >
+            <div class="flex items-center space-x-4">
+              <div class="p-3 bg-gradient-to-r from-green-500 to-yellow-500 rounded-full shadow-lg">
+                <svg
+                  class="w-6 h-6 text-black"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-white mb-2">Booking 24/7</h3>
+                <p class="text-gray-300 text-sm">
+                  Reserve a futsal court anytime, anywhere with a 24/7 system.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secure Payment Card -->
+          <div
+            class="bg-gradient-to-br from-gray-800 to-gray-900 border border-green-500/20 rounded-2xl p-6 shadow-xl backdrop-blur-sm hover:border-green-400/40 transition-all duration-300 hover:scale-105"
+          >
+            <div class="flex items-center space-x-4">
+              <div class="p-3 bg-gradient-to-r from-green-500 to-yellow-500 rounded-full shadow-lg">
+                <svg
+                  class="w-6 h-6 text-black"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-white mb-2">Secure Payment</h3>
+                <p class="text-gray-300 text-sm">
+                  A secure payment system with a variety of flexible payment methods.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quality Venues Card -->
+          <div
+            class="bg-gradient-to-br from-gray-800 to-gray-900 border border-green-500/20 rounded-2xl p-6 shadow-xl backdrop-blur-sm hover:border-green-400/40 transition-all duration-300 hover:scale-105"
+          >
+            <div class="flex items-center space-x-4">
+              <div class="p-3 bg-gradient-to-r from-green-500 to-yellow-500 rounded-full shadow-lg">
+                <svg
+                  class="w-6 h-6 text-black"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-white mb-2">Quality Venues</h3>
+                <p class="text-gray-300 text-sm">
+                  Partner with the best futsal courts, complete with facilities and excellent field
+                  conditions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Section -->
+        <div class="relative">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-green-500/20 via-yellow-500/20 to-green-500/20 rounded-2xl blur-xl"
+          ></div>
+          <div
+            class="relative bg-gradient-to-br from-gray-800 to-gray-900 border border-green-500/20 rounded-2xl p-4 shadow-xl backdrop-blur-sm"
+          >
+            <img
+              src="assets/pexels-bence-szemerey-337043-7513413.jpg"
+              alt="Futsal Court"
+              class="rounded-xl shadow-xl object-cover w-full h-64 md:h-80 hover:scale-105 transition-transform duration-300"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-xl"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-footer></app-footer>
+</ion-content>

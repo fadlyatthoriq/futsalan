@@ -1,0 +1,60 @@
+<section
+  id="testimoni"
+  class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black py-16 overflow-hidden"
+>
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent"></div>
+  </div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h4 class="text-xl md:text-2xl font-bold text-green-400 mb-5">What They Say</h4>
+      <h2
+        class="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-green-100 to-yellow-100 bg-clip-text text-transparent"
+      >
+        TESTIMONIALS FROM
+        <span class="text-green-400">PLAYERS</span>
+      </h2>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+        Hear directly from players who have experienced our booking service
+      </p>
+    </div>
+
+    <!-- Testimoni Cards -->
+    <div class="overflow-hidden">
+      <div class="flex animate-marquee-left w-max space-x-6">
+        <div class="flex space-x-6">
+          <app-testimonial
+            *ngFor="let testimonial of firstRowTestimonials.slice(0, 3)"
+            [testimonial]="testimonial"
+          ></app-testimonial>
+        </div>
+        <div class="flex space-x-6">
+          <app-testimonial
+            *ngFor="let testimonial of firstRowTestimonials.slice(3, 6)"
+            [testimonial]="testimonial"
+          ></app-testimonial>
+        </div>
+      </div>
+    </div>
+
+    <div class="overflow-hidden mt-10">
+      <div class="flex animate-marquee-right w-max space-x-6">
+        <div class="flex space-x-6">
+          <app-testimonial
+            *ngFor="let testimonial of secondRowTestimonials"
+            [testimonial]="testimonial"
+          ></app-testimonial>
+        </div>
+        <div class="flex space-x-6">
+          <app-testimonial
+            *ngFor="let testimonial of secondRowTestimonials"
+            [testimonial]="testimonial"
+          ></app-testimonial>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

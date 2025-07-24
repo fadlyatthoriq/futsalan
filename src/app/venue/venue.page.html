@@ -1,0 +1,114 @@
+<ion-content [fullscreen]="true" class="body">
+  <app-nav-bar></app-nav-bar>
+
+  <section class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black py-16">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto mt-10 px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h1
+          class="font-bold text-4xl md:text-5xl mb-4 bg-gradient-to-r from-white via-green-100 to-yellow-100 bg-clip-text text-transparent"
+        >
+          Futsal Court List
+        </h1>
+        <h2 class="text-2xl text-gray-300 max-w-2xl mx-auto">
+          Choose the best venue for your futsal game!
+        </h2>
+      </div>
+
+      <section
+        id="Venues"
+        class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5"
+      >
+        <div
+          *ngFor="let venue of venues"
+          class="relative bg-gradient-to-br from-gray-800 to-gray-900 border border-green-500/30 rounded-2xl p-6 shadow-xl backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:border-green-400/70 group w-72 overflow-hidden"
+        >
+          <a [routerLink]="['/venue', venue.slug]" class="block focus:outline-none">
+            <div class="relative mb-4 rounded-xl overflow-hidden h-80 w-72">
+              <img
+                [src]="venue.image"
+                alt="Futsal Court"
+                class="object-cover w-full h-full rounded-xl shadow-xl transition-transform duration-500 group-hover:scale-110"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black/70 to-transparent rounded-b-xl"
+              ></div>
+              <span
+                [ngClass]="
+                  venue.badgeClass +
+                  ' absolute top-3 left-3 bg-black/40 px-3 py-1 rounded-full text-xs font-semibold tracking-wide shadow-md backdrop-blur-sm'
+                "
+              >
+                {{ venue.location }}
+              </span>
+            </div>
+            <div>
+              <p class="text-lg font-bold text-white truncate block capitalize mb-1">
+                {{ venue.name }}
+              </p>
+              <div class="flex items-center mb-2">
+                <p class="text-lg font-semibold text-yellow-300 cursor-auto">{{ venue.price }}</p>
+                <div class="ml-auto flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    [ngClass]="'bi bi-calendar-check ' + venue.iconClass"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.854 8.146a.5.5 0 0 0-.708.708l1 1a.5.5 0 0 0 .708 0l2-2a.5.5 0 1 0-.708-.708L11.5 8.793l-.646-.647z"
+                    />
+                    <path
+                      d="M1 2.5A1.5 1.5 0 0 1 2.5 1h11A1.5 1.5 0 0 1 15 2.5v11A1.5 1.5 0 0 1 13.5 15h-11A1.5 1.5 0 0 1 1 13.5v-11zm1 0A.5.5 0 0 0 1.5 3v1h13V3a.5.5 0 0 0-.5-.5h-11zM14.5 5h-13v8.5a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5V5z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="text-xs text-gray-300 mb-4 flex items-center gap-2">
+                <svg
+                  class="w-4 h-4 text-green-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4"
+                  />
+                </svg>
+                <span>Facilities: {{ venue.facilities }}</span>
+              </div>
+              <button
+                [ngClass]="
+                  'w-full ' +
+                  venue.buttonClass +
+                  ' text-black py-2 rounded-lg font-semibold transition flex items-center justify-center gap-2 shadow-lg hover:shadow-yellow-200/40'
+                "
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  />
+                </svg>
+                Book Now
+              </button>
+            </div>
+          </a>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <app-footer></app-footer>
+</ion-content>

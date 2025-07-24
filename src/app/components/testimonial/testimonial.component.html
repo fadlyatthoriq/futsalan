@@ -1,0 +1,19 @@
+<div
+  class="bg-gradient-to-br from-gray-800 to-gray-900 border border-green-500/20 rounded-2xl p-8 shadow-xl w-[90vw] sm:w-[400px] md:w-[480px] min-h-[280px] backdrop-blur-sm"
+>
+  <div class="text-green-400 text-4xl mb-4">❝</div>
+  <p class="text-lg leading-relaxed text-gray-200 mb-6">
+    {{ testimonial.text }}
+  </p>
+  <div class="flex items-center">
+    <div
+      class="w-12 h-12 bg-gradient-to-r from-green-500 to-yellow-500 rounded-full flex items-center justify-center mr-4"
+    >
+      <span class="text-black font-bold text-lg">{{ testimonial.initials }}</span>
+    </div>
+    <div>
+      <p class="text-white font-semibold">{{ testimonial.author }}</p>
+      <p class="text-green-400 text-sm">{{ testimonial.role }}</p>
+    </div>
+  </div>
+</div>
