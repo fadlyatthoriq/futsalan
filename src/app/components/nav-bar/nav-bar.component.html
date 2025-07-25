@@ -46,7 +46,7 @@
         <a
           routerLink="/"
           routerLinkActive="text-green-400"
-          [class.text-green-400]="isActiveRoute('/home')"
+          [class.text-green-400]="isActiveRoute('/index')"
           class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-gray-300 transition-all duration-200 hover:text-green-400 group"
         >
           <span class="relative z-10">Home</span>
@@ -65,21 +65,31 @@
             class="absolute inset-0 rounded-lg bg-green-900/20 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
           ></span>
         </a>
-        <a
-          routerLink="/schedule"
-          routerLinkActive="text-green-400"
-          [class.text-green-400]="isActiveRoute('/schedule')"
-          class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-gray-300 transition-all duration-200 hover:text-green-400 group"
-        >
-          <span class="relative z-10">Schedule</span>
-          <span
-            class="absolute inset-0 rounded-lg bg-green-900/20 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-          ></span>
-        </a>
       </div>
 
-      <!-- Desktop Sign In Button -->
+      <!-- Desktop Sign In Button & Cart -->
       <div class="hidden md:flex md:items-center md:justify-end gap-3">
+        <!-- Tombol Cart -->
+        <button
+          (click)="openCart()"
+          class="relative flex items-center justify-center rounded-xl bg-gradient-to-r from-green-600 to-yellow-500 px-4 py-2 text-black font-semibold shadow-lg hover:from-green-700 hover:to-yellow-600 transition-all duration-200 mr-2"
+        >
+          <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A2 2 0 007.5 19h9a2 2 0 001.85-1.3L17 13M7 13V6h10v7"
+            ></path>
+          </svg>
+          <span
+            *ngIf="cart.length > 0"
+            class="ml-2 bg-red-500 text-xs rounded-full px-2 text-white"
+          >
+            {{ cart.length }}
+          </span>
+        </button>
+        <!-- Tombol Sign In -->
         <a
           class="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-green-600 to-yellow-500 px-4 py-2 text-sm font-semibold text-black shadow-lg transition-all duration-200 hover:from-green-700 hover:to-yellow-600 hover:shadow-xl hover:scale-105"
           routerLink="/login"
@@ -96,8 +106,27 @@
         </a>
       </div>
 
-      <!-- Mobile menu button -->
-      <div class="md:hidden">
+      <!-- Mobile menu button & Cart (mobile only) -->
+      <div class="md:hidden flex items-center gap-2">
+        <button
+          (click)="openCart()"
+          class="relative flex items-center justify-center rounded-xl bg-gradient-to-r from-green-600 to-yellow-500 px-3 py-2 text-black font-semibold shadow-lg hover:from-green-700 hover:to-yellow-600 transition-all duration-200"
+        >
+          <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A2 2 0 007.5 19h9a2 2 0 001.85-1.3L17 13M7 13V6h10v7"
+            ></path>
+          </svg>
+          <span
+            *ngIf="cart.length > 0"
+            class="ml-1 bg-red-500 text-xs rounded-full px-2 text-white"
+          >
+            {{ cart.length }}
+          </span>
+        </button>
         <button
           type="button"
           class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-green-400 hover:bg-green-900/20 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500 transition-all duration-200"
@@ -146,9 +175,9 @@
     <div class="md:hidden" [class.hidden]="!isMobileMenuOpen" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200 mt-4">
         <a
-          routerLink="/home"
+          routerLink="/index"
           routerLinkActive="text-green-400 bg-green-900/20"
-          [class.text-green-400]="isActiveRoute('/home')"
+          [class.text-green-400]="isActiveRoute('/index')"
           (click)="closeMobileMenu()"
           class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-green-400 hover:bg-green-900/20 transition-all duration-200"
         >
@@ -163,24 +192,6 @@
         >
           Venue
         </a>
-        <a
-          routerLink="/schedule"
-          routerLinkActive="text-green-400 bg-green-900/20"
-          [class.text-green-400]="isActiveRoute('/schedule')"
-          (click)="closeMobileMenu()"
-          class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-green-400 hover:bg-green-900/20 transition-all duration-200"
-        >
-          Schedule
-        </a>
-        <a
-          routerLink="/about"
-          routerLinkActive="text-green-400 bg-green-900/20"
-          [class.text-green-400]="isActiveRoute('/about')"
-          (click)="closeMobileMenu()"
-          class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-green-400 hover:bg-green-900/20 transition-all duration-200"
-        >
-          About
-        </a>
         <div class="pt-4 pb-3 border-t border-gray-200">
           <a
             routerLink="/login"
@@ -194,3 +205,13 @@
     </div>
   </div>
 </nav>
+
+<!-- Drawer Cart Component -->
+<app-cart-drawer
+  [cart]="cart"
+  [isOpen]="isCartOpen"
+  [total]="cartTotal"
+  (close)="closeCart()"
+  (remove)="removeFromCart($event)"
+  (checkout)="handleCheckout()"
+></app-cart-drawer>

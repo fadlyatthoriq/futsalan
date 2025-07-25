@@ -1,0 +1,57 @@
+// Card container
+.max-w-xl {
+  background: var(--ion-background-color, #fff);
+  border-radius: 1.25rem;
+  box-shadow:
+    0 4px 24px 0 rgba(0, 0, 0, 0.07),
+    0 1.5px 4px 0 rgba(0, 0, 0, 0.03);
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+// Thank you message
+.text-2xl.font-bold {
+  color: var(--ion-color-primary, #2563eb);
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+// Section titles
+.font-semibold.mb-2 {
+  color: var(--ion-color-medium, #64748b);
+  font-size: 1.1rem;
+}
+
+// Order item
+li.flex {
+  transition:
+    box-shadow 0.2s,
+    background 0.2s;
+  cursor: pointer;
+  &:hover {
+    background: var(--ion-color-primary-tint, #e0e7ff);
+    box-shadow: 0 2px 8px 0 rgba(37, 99, 235, 0.08);
+  }
+}
+
+// Total row
+.font-bold.text-lg {
+  color: var(--ion-color-success, #22c55e);
+  border-top: 1px solid var(--ion-color-step-150, #e5e7eb);
+  padding-top: 0.75rem;
+}
+
+// Customer info list
+.list-disc.pl-5 {
+  color: var(--ion-color-dark, #1e293b);
+  font-size: 1rem;
+}
+
+// Responsive padding
+@media (max-width: 600px) {
+  .max-w-xl {
+    padding: 1.25rem !important;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}

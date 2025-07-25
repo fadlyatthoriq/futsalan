@@ -5,8 +5,9 @@ import { ActivatedRoute } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { NavBarComponent } from '../components/nav-bar/nav-bar.component';
-import { FooterComponent } from '../components/footer/footer.component';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { CartDrawerComponent } from '../../components/cart-drawer/cart-drawer.component';
+import { CartService } from '../../cart.service';
 
 interface Venue {
   name: string;
@@ -28,7 +29,7 @@ interface Schedule {
   templateUrl: './venue-detail.page.html',
   styleUrls: ['./venue-detail.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, NavBarComponent, FooterComponent, IonicModule],
+  imports: [CommonModule, FormsModule, FooterComponent, IonicModule, CartDrawerComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class VenueDetailPage implements OnInit {
@@ -94,7 +95,10 @@ export class VenueDetailPage implements OnInit {
     },
   ];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private cartService: CartService,
+  ) {}
 
   ngOnInit(): void {
     this.slug = this.route.snapshot.paramMap.get('slug');
@@ -161,5 +165,12 @@ export class VenueDetailPage implements OnInit {
 
   get availableScheduleCount(): number {
     return this.schedules.filter((s) => s.status === 'available').length;
+  }
+
+  handleScheduleClick(s: Schedule): void {
+    if (s.status === 'available') {
+      this.cartService.addToCart(s);
+      this.selectSchedule(s);
+    }
   }
 }

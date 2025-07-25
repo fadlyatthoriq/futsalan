@@ -1,0 +1,62 @@
+<!-- Overlay -->
+<div *ngIf="isOpen" @overlayAnim class="fixed inset-0 bg-black/60 z-40" (click)="onClose()"></div>
+<!-- Drawer -->
+<div
+  *ngIf="isOpen"
+  @drawerAnim
+  class="fixed top-0 right-0 h-full w-full md:w-80 z-50 bg-slate-900/95 backdrop-blur-lg shadow-2xl md:rounded-l-2xl border-l border-green-400/20 flex flex-col"
+>
+  <div
+    class="flex justify-between items-center shadow-md px-4 py-3 md:px-6 md:py-4 md:rounded-tl-2xl md:rounded-tr-2xl bg-gradient-to-r from-green-500 to-yellow-400"
+  >
+    <div class="flex items-center gap-2">
+      <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A2 2 0 007.5 19h9a2 2 0 001.85-1.3L17 13M7 13V6h10v7"
+        />
+      </svg>
+      <h2 class="text-xl font-bold text-black">Cart</h2>
+    </div>
+    <button
+      (click)="onClose()"
+      class="text-2xl text-black rounded-full w-8 h-8 flex items-center justify-center transition-colors"
+    >
+      &times;
+    </button>
+  </div>
+  <div class="p-4 md:p-6 flex-1 flex flex-col overflow-y-auto">
+    <div *ngIf="cart.length === 0" class="text-gray-400 text-center mt-8">Cart is empty.</div>
+    <div
+      *ngFor="let c of cart"
+      class="flex justify-between items-center mb-4 p-3 rounded-xl bg-white/90 shadow transition hover:scale-[1.02]"
+    >
+      <div>
+        <div class="font-semibold text-green-700">{{ c.time }}</div>
+        <div class="text-sm text-gray-500">IDR {{ c.price | number }}</div>
+      </div>
+      <button
+        (click)="onRemove(c)"
+        class="text-red-500 font-semibold hover:text-red-700 hover:underline transition"
+      >
+        Remove
+      </button>
+    </div>
+    <div *ngIf="cart.length > 0" class="mt-auto flex flex-col gap-3">
+      <div
+        class="flex items-center justify-between bg-gradient-to-r from-green-500 to-yellow-400 text-black rounded-xl px-5 py-4 shadow-lg"
+      >
+        <span class="font-semibold">Total:</span>
+        <span class="font-bold text-lg">IDR {{ total | number }}</span>
+      </div>
+      <button
+        (click)="onCheckout()"
+        class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl shadow transition"
+      >
+        Checkout
+      </button>
+    </div>
+  </div>
+</div>

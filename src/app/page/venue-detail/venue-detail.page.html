@@ -1,6 +1,4 @@
 <ion-content [fullscreen]="true" class="body">
-  <app-nav-bar></app-nav-bar>
-
   <section
     *ngIf="venue; else notFound"
     class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black py-16 min-h-screen overflow-hidden"
@@ -163,8 +161,8 @@
             <div
               *ngFor="let s of schedules"
               tabindex="0"
-              (click)="s.status === 'available' && selectSchedule(s)"
-              (keydown.enter)="s.status === 'available' && selectSchedule(s)"
+              (click)="handleScheduleClick(s)"
+              (keydown.enter)="handleScheduleClick(s)"
               [attr.aria-disabled]="s.status === 'booked'"
               [ngClass]="{
                 'border-2 border-green-400 bg-gradient-to-br from-gray-900 to-gray-800 text-white font-bold shadow-lg hover:scale-105 hover:border-yellow-400 focus:ring-2 focus:ring-yellow-400 transition cursor-pointer':

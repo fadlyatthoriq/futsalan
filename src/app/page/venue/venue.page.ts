@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NavBarComponent } from '../components/nav-bar/nav-bar.component';
-import { FooterComponent } from '../components/footer/footer.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
@@ -11,14 +10,7 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: './venue.page.html',
   styleUrls: ['./venue.page.scss'],
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    NavBarComponent,
-    FooterComponent,
-    RouterModule,
-    IonicModule,
-  ],
+  imports: [CommonModule, FormsModule, FooterComponent, RouterModule, IonicModule],
 })
 export class VenuePage implements OnInit {
   venues = [
